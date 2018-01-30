@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="dirPicker_colorDivider">#606060</color>
+  <color name="dirPicker_colorTextActive">#ffffff</color>
+  <color name="dirPicker_colorTextInactive">#b0b0b0</color>
+</resources>

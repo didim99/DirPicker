@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="dirPicker_textSize_path">18sp</dimen>
+  <dimen name="dirPicker_layoutHMargin">5dp</dimen>
+  <dimen name="dirPicker_itemTextSize">16sp</dimen>
+  <dimen name="dirPicker_itemTextPadding">8dp</dimen>
+  <dimen name="dirPicker_itemIconPadding">5dp</dimen>
+  <dimen name="dirPicker_divHMargin">6dp</dimen>
+  <dimen name="dirPicker_divHeight">1dp</dimen>
+</resources>
