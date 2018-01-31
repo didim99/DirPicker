@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="dirPicker_dirUnreadable">Access denied</string>
+  <string name="dirPicker_fsRootUnreadable">Can't open root directory, open sdcard</string>
   <string name="btnText_dirPicker_back">Back</string>
   <string name="btnText_dirPicker_go">OK</string>
 </resources>
