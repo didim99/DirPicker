@@ -5,7 +5,7 @@ Simple directory picker Activity
 
 ### Dependencies
 Add in your `build.gradle`:
-```
+```Groovy
 android {
   ...
   defaultConfig {
@@ -29,7 +29,7 @@ dependencies {
 # Using
 
 To start `DirPicker` use:
-```(Java)
+```Java
 public class MainActivity extends AppCompatActivity {
 ...
   private static final int REQUEST_CHOOSE_DIR = 1;
@@ -43,8 +43,7 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 To get choosed path use:
-```(Java)
-
+```Java
 @Override
 protected void onActivityResult(int requestCode, int resultCode, Intent i) {
   if (requestCode == REQUEST_CHOOSE_DIR && resultCode == RESULT_OK) {
