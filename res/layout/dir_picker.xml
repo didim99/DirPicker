@@ -5,7 +5,7 @@
                 android:layout_height="wrap_content">
 
   <TextView
-    android:id="@+id/textPath"
+    android:id="@+id/dirPicker_tvPath"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentTop="true"
@@ -16,16 +16,30 @@
     android:layout_margin="@dimen/dirPicker_layoutHMargin"
     android:textSize="@dimen/dirPicker_textSize_path"/>
 
-  <android.support.v7.widget.RecyclerView
-    android:id="@+id/list_dir"
+  <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_above="@id/dirPicker_btnLayout"
+    android:layout_below="@id/dirPicker_tvPath"
     android:layout_marginLeft="@dimen/dirPicker_layoutHMargin"
     android:layout_marginStart="@dimen/dirPicker_layoutHMargin"
     android:layout_marginRight="@dimen/dirPicker_layoutHMargin"
-    android:layout_marginEnd="@dimen/dirPicker_layoutHMargin"
-    android:layout_below="@id/textPath"/>
+    android:layout_marginEnd="@dimen/dirPicker_layoutHMargin">
+
+    <TextView
+      android:id="@+id/dirPicker_tvEmpty"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:textSize="@dimen/dirPicker_textSize_path"
+      android:text="@string/tvText_dirPicker_empty"
+      android:visibility="invisible"/>
+
+    <android.support.v7.widget.RecyclerView
+      android:id="@+id/dirPicker_listDir"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"/>
+  </RelativeLayout>
 
   <LinearLayout
     android:id="@+id/dirPicker_btnLayout"
@@ -55,7 +69,5 @@
       android:onClick="onClickGo"
       android:text="@string/btnText_dirPicker_go"
       tools:ignore="ButtonStyle"/>
-      
   </LinearLayout>
-
 </RelativeLayout>

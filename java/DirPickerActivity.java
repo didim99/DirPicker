@@ -1,4 +1,3 @@
-package com.didim99.satools;
 
 import android.app.Activity;
 import android.content.Context;
@@ -33,7 +32,7 @@ import java.util.Map;
 public class DirPickerActivity extends AppCompatActivity {
   private static final String LOG_TAG = "My_log_DirPicker";
   private Context appContext;
-  private TextView textPath;
+  private TextView tvPath, tvEmpty;
   private Button btnGo;
   private int selectedId = -1;
   private String path;
@@ -54,9 +53,10 @@ public class DirPickerActivity extends AppCompatActivity {
 
     //Adapter and view configuration
     adapter = new ListDirAdapter(this, arrayDir);
-    textPath = findViewById(R.id.textPath);
+    tvPath = findViewById(R.id.dirPicker_tvPath);
+    tvEmpty = findViewById(R.id.dirPicker_tvEmpty);
     btnGo = findViewById(R.id.dirPicker_go);
-    RecyclerView listDir = findViewById(R.id.list_dir);
+    RecyclerView listDir = findViewById(R.id.dirPicker_listDir);
     listDir.setLayoutManager(new LinearLayoutManager(this));
     listDir.setHasFixedSize(true);
     listDir.setAdapter(adapter);
@@ -120,26 +120,31 @@ public class DirPickerActivity extends AppCompatActivity {
     boolean dirOpened = files != null;
     btnGo.setEnabled(dirOpened);
     if (dirOpened) {
-      Arrays.sort(files);
-      Map<String, Object> m;
-      for (File file : files) {
-        boolean isDir = file.isDirectory();
-        m = new HashMap<>();
-        m.put(ATTR_NAME, file.getName());
-        m.put(ATTR_IS_DIR, isDir);
-        if (isDir)
-          arrayDir.add(m);
-        else
-          arrayFiles.add(m);
+      if (files.length > 0) {
+        tvEmpty.setVisibility(TextView.INVISIBLE);
+        Arrays.sort(files);
+        Map<String, Object> m;
+        for (File file : files) {
+          boolean isDir = file.isDirectory();
+          m = new HashMap<>();
+          m.put(ATTR_NAME, file.getName());
+          m.put(ATTR_IS_DIR, isDir);
+          if (isDir)
+            arrayDir.add(m);
+          else
+            arrayFiles.add(m);
+        }
+        arrayDir.addAll(arrayFiles);
+      } else {
+        tvEmpty.setVisibility(TextView.VISIBLE);
       }
-      arrayDir.addAll(arrayFiles);
     } else {
       Toast.makeText(appContext,
         R.string.dirPicker_dirUnreadable, Toast.LENGTH_LONG).show();
     }
 
     adapter.notifyDataSetChanged();
-    textPath.setText(path);
+    tvPath.setText(path);
   }
 
   private boolean isDirOpened(String dirName) {
